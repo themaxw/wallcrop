@@ -1,0 +1,40 @@
+[project]
+name = "wallcrop"
+description = "A tool for cropping an image into smaller images for use as individual desktop wallpapers"
+authors = [{ name = "Max Weidauer", email = "weidauer@campus.tu-berlin.de" }]
+maintainers = [
+    { name = "Max Weidauer", email = "weidauer@campus.tu-berlin.de" },
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["version"]
+dependencies = ["pillow", "click", "pyYAML", "tqdm"]
+license = { file = "LICENSE" }
+
+[project.scripts]
+wallcrop = "wallcrop.wallcrop:main"
+
+[project.urls]
+Github = "https://github.com/themaxw/wallcrop"
+Issues = "https://github.com/themaxw/wallcrop/issues"
+
+
+[build-system]
+requires = ["setuptools >= 61.0.0", "versioneer[toml]==0.29"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
+[tool.setuptools.package-data]
+wallcrop = ["*.yml"]
+
+# automatically handle version numbers
+[tool.versioneer]
+VCS = "git"
+style = "pep440"
+versionfile_source = "src/wallcrop/_version.py"
+versionfile_build = "wallcrop/_version.py"
+tag_prefix = ""
+parentdir_prefix = "wallcrop-"
