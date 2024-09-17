@@ -32,6 +32,5 @@ jobs:
         run: python -m build
       - name: Publish package
         # only publish when a tag was created
-        if: github.repository == 'tu-studio/jack-connection-manager' && startsWith(github.ref, 'refs/tags')
+        if: github.repository == 'themaxw/wallcrop' && startsWith(github.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@release/v1
-        
