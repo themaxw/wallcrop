@@ -13,6 +13,7 @@ license = { file = "LICENSE" }
 
 [project.scripts]
 wallcrop = "wallcrop.wallcrop:main"
+wallswitch = "wallcrop.wallswitch:main"
 
 [project.urls]
 Github = "https://github.com/themaxw/wallcrop"
