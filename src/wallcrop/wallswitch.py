@@ -7,7 +7,10 @@ from time import sleep
 import click
 
 
-@click.command("wallswitch")
+@click.command(
+    "wallswitch",
+    context_settings=dict(help_option_names=["-h", "--help"]),
+)
 @click.option(
     "-d",
     "--daemon",
@@ -39,7 +42,7 @@ def main(daemon: bool, switch_time: float, wallpaper_dir: Path, wallpaper_tool: 
         print(f"seting wallpaper {wp_name}")
 
         for wp in wallpaper_dir.glob(f"{wp_name}*"):
-            display = wp.stem[len(wp_name) :]
+            display = wp.stem[len(wp_name) :].strip(" _")
             if wallpaper_tool == "swww":
                 subprocess.run(["swww", "img", "-o", display, str(wp.absolute())])
             else:

@@ -8,13 +8,16 @@ from tqdm import tqdm
 
 
 
-@click.command("wallcrop")
+@click.command("wallcrop",
+help="A tool for cropping an image into smaller images for use as individual desktop wallpapers",
+context_settings=dict(help_option_names=["-h", "--help"]),)
 @click.option(
     "-m",
     "--monitors",
     "monitor_file",
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
     default="./monitors.yml",
+    show_default=True
 )
 @click.option(
     "-n",
@@ -28,9 +31,10 @@ from tqdm import tqdm
     "output_path",
     type=click.Path(file_okay=False, path_type=Path),
     default="./wallcrop",
+    show_default=True
 )
 @click.option(
-    "-f", "--format", type=click.STRING, default="png"
+    "-f", "--format", type=click.STRING, default="png", help="file format of the cropped images",show_default=True
 )
 @click.argument("input_file", nargs=-1, type=click.Path(exists=True, path_type=Path))
 def main(monitor_file: Path, output_path: Path, no_scale: bool, input_file: tuple[Path], format: str):
