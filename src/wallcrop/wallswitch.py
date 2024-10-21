@@ -24,7 +24,9 @@ import click
     default=5 * 60,
     help="time in s after which the wallpaper will be changed",
 )
-@click.option("-w", "--wallpaper-tool", type=click.STRING, default="swww")
+@click.option(
+    "-w", "--wallpaper-tool", type=click.Choice(["swww", "hyprpaper"]), default="swww"
+)
 @click.argument(
     "wallpaper_dir",
     type=click.Path(exists=True, file_okay=False, path_type=Path),
@@ -45,10 +47,22 @@ def main(daemon: bool, switch_time: float, wallpaper_dir: Path, wallpaper_tool: 
             display = wp.stem[len(wp_name) :].strip(" _")
             if wallpaper_tool == "swww":
                 subprocess.run(["swww", "img", "-o", display, str(wp.absolute())])
+            elif wallpaper_tool == "hyprpaper":
+                subprocess.run(["hyprctl", "hyprpaper", "preload", str(wp.absolute())])
+                subprocess.run(
+                    [
+                        "hyprctl",
+                        "hyprpaper",
+                        "wallpaper",
+                        f"{display},{str(wp.absolute())}",
+                    ]
+                )
             else:
                 print("your tool is currently unsupported")
                 sys.exit(-1)
-
+        if wallpaper_tool == "hyprpaper":
+            sleep(0.2)
+            subprocess.run(["hyprctl", "hyprpaper", "unload", "all"])
         if not daemon:
             break
         sleep(switch_time)

@@ -35,7 +35,7 @@ wallcrop -h
 
 ## wallswitch
 
-as a treat, there also is wallswitch for setting the wallpapers following the wallcrop structure. this currently only supports `swww` as a wallpaper daemon and only works if the names of the monitors in the `monitors.yml` correspond to the names of the outputs
+as a treat, there also is wallswitch for setting the wallpapers following the wallcrop structure. this currently only supports `swww` and `hyprpaper` (using preload`hyprctl hyprpaper` for IPC) as wallpaper daemons and only works if the names of the monitors in the `monitors.yml` correspond to the names of the outputs
 
 ## creating the monitors file on Hyprland
 
