@@ -1,5 +1,7 @@
 # Wallcrop
 
+![header](assets/github-header.png)
+
 Wallcrop is a simple tool for cropping an image into smaller images for use as individual desktop wallpapers in a multi-monitor setup.
 
 It can either arrange by size in pixels, or by the actual size of the monitors in cm.
