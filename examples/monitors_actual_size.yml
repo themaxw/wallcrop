@@ -1,0 +1,29 @@
+- name: HDMI-A-1
+  height: 1080
+  width: 1920
+  height_cm: 33.6
+  width_cm: 59.8
+  x: 0
+  y: 0
+  x_cm: 34.6 #32.3 + 2.3
+  y_cm: 11.3
+
+- name: DP-4
+  height: 1200
+  width: 1920
+  x: 1920
+  y: 0
+  x_cm: 97.2 #32.3 + 59.8 + 2.3 + 2.8
+  y_cm: 12.1 #11.3 + 0.8
+  height_cm: 32.3
+  width_cm: 51.7
+
+- name: DP-3 # Hochkant
+  width: 1200
+  height: 1920
+  width_cm: 32.3
+  height_cm: 51.7
+  x: -1200
+  y: -450
+  x_cm: 0
+  y_cm: 0
