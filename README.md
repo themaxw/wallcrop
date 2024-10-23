@@ -21,7 +21,15 @@ pip install wallcrop
 In order to crop up some images you need to let wallcrop know about your monitor setup. This is done in a yaml file, here called `monitors.yml`, an example for this file can be found in `examples/monitors.yml`.
 
 The `monitors.yml` contains a list of monitors, each with a `name`, `height` and `width` of the monitor (if your monitor is vertical just swap these) and `x` and `y` position of the top left corner of the monitor in pixels.
-If you want to use the `actual-monitor-size` option (arranging not by the size in pixels, but the actual size of the screens in cm) you need to additionally add values for `x_cm`, `y_cm`, `width_cm` and `height_cm` for each monitor. Gaps between monitors should be accounted for in `x_cm` and `y_cm`.
+If you want to use the `actual-monitor-size` (`-a`) option (arranging not by the size in pixels, but the actual size of the screens in cm) you need to additionally add values for `x_cm`, `y_cm`, `width_cm` and `height_cm` for each monitor, in that case you don't need values for `x` and `y`. Gaps between monitors should be accounted for in `x_cm` and `y_cm`.
+
+In the used coordinate system $x=0$, $y=0$ is the top-left corner, with x increasing to the right, and y increasing down. negative values for these are also fine.
+
+To crop an image use
+
+```bash
+wallcrop -m path/to/your/monitors.yml path/to/your/image.png
+```
 
 To crop all images in a folder use
 
